@@ -57,7 +57,7 @@ public class CertificadoEmisor {
 
     public static PublicKey getClavePublica() {
         File ficheroClavePublica= new File(FICHEROCLAVEPUBLICA);
-        PublicKey clavePublica;
+        PublicKey clavePublica=null;
 
         try {
             byte[] bytesPublica = Files.readAllBytes(ficheroClavePublica.toPath());
@@ -71,5 +71,7 @@ public class CertificadoEmisor {
             System.err.println("ERROR: El algoritmo no es valido");
             e.printStackTrace();
         }
+
+        return clavePublica;
     }
 }
