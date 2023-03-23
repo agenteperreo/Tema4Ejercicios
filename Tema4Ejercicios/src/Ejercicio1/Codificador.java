@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * Clase que tiene los métodos de codificación y comparación de resúmenes para que las otras clases puedan usarlos.
+ *
+ * @author igarcia
  */
 public class Codificador {
     /**
