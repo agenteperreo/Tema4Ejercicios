@@ -52,34 +52,4 @@ public class Codificador {
         return resumen;
     }
 
-    /**
-     * Precondiciones: No tiene.
-     * Compara dos arrays de bytes (resúmenes) indicando si son o no iguales.
-     * Postcondiciones: Devuelve true si son iguales, false si no lo son.
-     *
-     * @param resumen1 Array de bytes a comparar
-     * @param resumen2 Array de bytes a comparar
-     * @return boolean con el resultado
-     */
-    public static boolean compararResumenes(byte[] resumen1, byte[] resumen2) {
-        //Uso el método de la clase MessageDigest para comparar los resúmenes de bytes si son iguales y devuelvo el resultado.
-        return MessageDigest.isEqual(resumen1, resumen2);
-    }
-
-    /**
-     * Precondiciones: No tiene.
-     * Compara dos arrays de bytes (resúmenes) indicando si son o no iguales transformándolos antes en hash hexadecimal.
-     * Postcondiciones: Devuelve true si son iguales, false si no lo son.
-     *
-     * @param resumen1 Array de bytes a comparar
-     * @param resumen2 Array de bytes a comparar
-     * @return boolean con el resultado
-     */
-    public static boolean compararHash(byte[] resumen1, byte[] resumen2) {
-        //Transformo los resúmenes en hash hexadecimal
-        String hash1 = String.format("%064x", new BigInteger(1, resumen1));
-        String hash2 = String.format("%064x", new BigInteger(1, resumen2));
-        //Devuelvo el resultado de la comparación pero en formato hexadecimal
-        return hash1.equals(hash2);
-    }
 }
