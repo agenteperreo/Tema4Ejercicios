@@ -5,13 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Clase que registrará al usuario con su contraseña en el fichero credenciales.cre
  */
-public class Register {
+public class Registrarse {
 
     /**
      * Main en el que guardamos el usuario y la contraseña encriptada en el fichero credenciales.cre.
@@ -47,7 +46,7 @@ public class Register {
     private static void guardarCredenciales(String nombre, String password) {
 
         // Obtenemos el resumen de la contraseña
-        byte[] resumen = Coder.getDigest(password);
+        byte[] resumen = Codificador.getDigest(password);
 
         // Convertimos el resumen a hexadecimal
         String contraseñaEncriptada = String.format("%064x", new BigInteger(1, resumen));
