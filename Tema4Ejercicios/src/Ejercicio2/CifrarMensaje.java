@@ -33,7 +33,7 @@ public class CifrarMensaje {
      */
     public static void guardarTextCifrado(String texto, String clave){
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/Ejercicio2/textoCifrado.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("Tema4Ejercicios/src/Ejercicio2/textoCifrado.txt"));
             bw.write(MaquinaEnigma.cifrar(texto, MaquinaEnigma.obtenerClave(clave)));
             bw.newLine();
             bw.close();

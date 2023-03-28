@@ -16,19 +16,19 @@ public class MaquinaEnigma {
     private static final String ALGORITMO = "AES/ECB/PKCS5Padding";
 
     /**
-     * Precondiciones: La clave debe ser un String y tener 16 caracteres.
-     * Recibe la clave introducida por el usuario y la convierte en una Key para cifrar el mensaje.
-     * Postcondiciones: Devuelve un Key con la clave para codificar el mensaje.
+     * Metodo que recibe la clave introducida por el usuario y la convierte en una Key para cifrar el mensaje.
      *
      * @param claveUsuario La clave introducida por el usuario
      * @return Key con la clave para codificar el mensaje
      */
     public static Key obtenerClave(String claveUsuario) {
+
+        //Devolvemos la key para descifrar el mensaje
         return new SecretKeySpec(claveUsuario.getBytes(), 0, LONGITUD, "AES");
     }
 
     /**
-     * Recibe el texto a cifrar y la clave para cifrarlo, pasado por parametros
+     * Metodo que recibe el texto a cifrar y la clave para cifrarlo, pasado por parametros
      * y mediante la clase Cipher cifra el texto y lo devuelve.
      *
      * @param texto El texto a cifrar
@@ -55,16 +55,16 @@ public class MaquinaEnigma {
             System.err.println("ERROR: No existe el algoritmo especificado");
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
-            System.err.println("El padding seleccionado no existe");
+            System.err.println("ERROR: El padding seleccionado no existe");
             e.printStackTrace();
         } catch (InvalidKeyException e) {
-            System.err.println("La clave utilizada no es válida");
+            System.err.println("ERROR: La clave utilizada no es válida");
             e.printStackTrace();
         } catch (IllegalBlockSizeException e) {
-            System.err.println("El tamaño del bloque elegido no es correcto");
+            System.err.println("ERROR: El tamaño del bloque elegido no es correcto");
             e.printStackTrace();
         } catch (BadPaddingException e) {
-            System.err.println("El padding seleccionado no es correcto");
+            System.err.println("ERROR: El padding seleccionado no es correcto");
             e.printStackTrace();
         }
 
@@ -73,8 +73,7 @@ public class MaquinaEnigma {
     }
 
     /**.
-     * Recibe el texto cifrado y la clave para descifrarlo y mediante la clase Cipher descifra el texto y lo devuelve.
-     * Postcondiciones: Devuelve el texto descifrado en formato String.
+     * Metodo que recibe el texto cifrado y la clave para descifrarlo y mediante la clase Cipher descifra el texto y lo devuelve.
      *
      * @param mensajeCifrado El texto cifrado
      * @param clave          La clave para descifrar el texto
@@ -88,8 +87,14 @@ public class MaquinaEnigma {
         try {
             //Instanciamos el cipher con el algoritmo
             Cipher cipher = Cipher.getInstance(ALGORITMO);
+
+            // Iniciamos el desencriptado
             cipher.init(Cipher.DECRYPT_MODE, clave);
+
+            //Guardamos el mensaje desencriptado en la variable descifrar
             descifrar = cipher.doFinal(Base64.getDecoder().decode(mensajeCifrado));
+
+            //Control de excepciones
         } catch (NoSuchPaddingException e) {
             System.err.println("No existe el algoritmo especificado");
             e.printStackTrace();
@@ -106,6 +111,8 @@ public class MaquinaEnigma {
             System.err.println("El padding seleccionado no es correcto");
             e.printStackTrace();
         }
+
+        //Devolvemos el String del mesnaje descifrado
         return new String(descifrar);
     }
 }

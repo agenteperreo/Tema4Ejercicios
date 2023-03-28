@@ -3,6 +3,7 @@ package Ejercicio2;
 import java.util.Scanner;
 
 public class CifrarYDescifrar {
+
     public static void main(String[] args) {
         menuPrincipal();
     }
@@ -42,9 +43,7 @@ public class CifrarYDescifrar {
         sc.close();
     }
     /**
-     * Precondiciones: No tiene.
      * Método que pide el texto y la clave para cifrarlo y guardarlo.
-     * Postcondiciones: No tiene.
      */
     private static void cifrarMensaje() {
         Scanner sc = new Scanner(System.in);
@@ -61,9 +60,7 @@ public class CifrarYDescifrar {
         }
     }
     /**
-     * Precondiciones: No tiene.
      * Método que pide la clave para descifrar el texto y mostrarlo por pantalla.
-     * Postcondiciones: No tiene.
      */
     private static void descifrarMensaje() {
         Scanner sc = new Scanner(System.in);
